@@ -20,6 +20,11 @@ class uPID:
 
         self.saveSettings()
 
+        self.sensor = sensor
+
+    def read(self):
+        return self.sensor.read()
+
 
     def saveSettings(self):
         with open(self.settingsFile, "w") as f:
