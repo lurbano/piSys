@@ -7,7 +7,7 @@ import pprint
 # TEMPERATURE SENSOR
 class sensor_T:
 
-    def __init__(self, server):
+    def __init__(self, server=None):
 
         #Thermometer setup
         Popen(['modprobe', 'w1-gpio'])
