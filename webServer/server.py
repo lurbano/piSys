@@ -239,5 +239,9 @@ if __name__ == "__main__":
 
 	except:
 		print ("Exception triggered - Tornado Server stopped.")
+		if ledPix:
+			ledPix.clear()
+			ledPix.pixels[0] = (100,0,100)
+			ledPix.pixels.show()
 
 #End of Program
