@@ -1,5 +1,7 @@
 import json
-import RPi.GPIO as gpio
+# import RPi.GPIO as gpio
+import board
+from digitalio import DigitalInOut, Direction
 
 
 defaultPidSettings = {
@@ -12,7 +14,7 @@ defaultPidSettings = {
 }
 
 class uPID:
-    def __init__(self, sensor, pidDir='./pid/', relayPin=21):
+    def __init__(self, sensor, pidDir='./pid/', relayPin=board.D26):
         self.pidDir = pidDir
         self.logDir = pidDir + "log/"
         self.logFile = self.logDir + "activeLog.dat"
@@ -26,16 +28,21 @@ class uPID:
         self.sensor = sensor
 
         self.relayPin = relayPin
-        gpio.setwarnings(False)
-        gpio.setmode(gpio.BCM)
-        gpio.setup(self.relayPin, gpio.OUT)
+        power = DigitalInOut(self.relayPin)
+        power.direction = Direction.OUTPUT
+        power.value = False
+        # gpio.setwarnings(False)
+        # gpio.setmode(gpio.BCM)
+        # gpio.setup(self.relayPin, gpio.OUT)
 
 
     def turnOn(self):
-        gpio.output(self.relayPin, gpio.HIGH)
+        #gpio.output(self.relayPin, gpio.HIGH)
+        power.value = True
 
     def turnOff(self):
-        gpio.output(self.relayPin, gpio.LOW)
+        #gpio.output(self.relayPin, gpio.LOW)
+        power.value = False
 
     def read(self):
         return self.sensor.read()
