@@ -334,7 +334,7 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     //console.log(newx, newy);
 
-    let update = { x: [[newx]], y: [[newy]], marker: [{color:'rgb(255,0,0)'}]};
+    let update = { x: [[newx]], y: [[newy]], marker: [[{color:'rgb(255,0,0)'}]]};
     //console.log(update);
 
     Plotly.extendTraces(this.plot, update, [0] );
