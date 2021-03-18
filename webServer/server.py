@@ -137,7 +137,6 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				sensor = sensor_T(self)
 				if ledPix:
 					ledPix.clear()
-					ledPix.setColor((0,0,100))
 
 				if not pid:
 					pid = uPID(sensor, self)

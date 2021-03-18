@@ -80,6 +80,9 @@ class uPID:
 
         self.runPID = True
         print(f'dt: {dt}')
+        ledPix.pixels[0] = (0, 0, 100)
+        ledPix.pixels.show()
+
         while self.runPID:
             tstepInitial = time.time()
             T = await self.sensor.aRead_basic()
@@ -92,11 +95,10 @@ class uPID:
                     self.power.value = False
 
             if ledPix:
-                print("pixeling", self.power.value)
                 if self.power.value:
-                    ledPix.pixels[1] = (0, 200, 0)
+                    ledPix.pixels[1] = (100, 0, 0)
                 else:
-                    ledPix.pixels[1] = (200, 0, 0)
+                    ledPix.pixels[1] = (0, 100, 0)
                 ledPix.pixels.show()
 
             msg = {}
