@@ -2,12 +2,13 @@ import json
 import board
 from digitalio import DigitalInOut, Direction
 import asyncio
+import time
 
 defaultPidSettings = {
     "Kp": -1,
     "Ki": 0,
     "Kd": -100,
-    "set": 30,
+    "set": 25,
     "units": "°C",
     "dt": 5
 }
@@ -31,15 +32,25 @@ class uPID:
         self.power.direction = Direction.OUTPUT
         self.power.value = False
 
-    async def target(self, val):
+    def target(self, val):
         self.target_value = val
-        asyncio.run(self.controller)
-
-    async def controller(self):
         while True:
-            m = await self.sensor.aRead(getTime=True)
-            print(m)
-            await asyncio.sleep(1)
+            T = self.read()
+            if T < self.target_value:
+                if self.power.value == False:
+                    self.power.value = True
+            else:
+                if (self.power.value == True):
+                    self.power.value = False
+            time.sleep(5)
+
+
+
+    # def controller(self):
+    #     while True:
+    #         T = self.read()
+
+
 
 
     def turnOn(self):
