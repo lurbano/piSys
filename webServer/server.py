@@ -81,7 +81,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		if ledPix:
 			self.write_message({"info": "LEDsActive", "active": "show", "nPix": nPix})
 			print("LED's Active")
-			ledPix.pixels[0] = (0,0,100)
+			ledPix.pixels[0] = (0,100,0)
 			ledPix.pixels.show()
 		else:
 			self.write_message({"info": "LEDsActive", "active": "hide"})
