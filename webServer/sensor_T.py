@@ -46,7 +46,6 @@ class sensor_T:
 
     async def aRead(self, getTime=False, log=False, update="live"):
         l_yes = False
-        print("Reading")
         while (not l_yes):
             with open(self.device_file) as f:
                 lns = f.readlines()
@@ -66,7 +65,6 @@ class sensor_T:
 
         if getTime:
             message["t"] = time.ctime(time.time())
-        print("1")
         if log:
             m = {"x": T_C, "t":round(time.time()-self.startTime, 4)}
             self.log.append(m)
@@ -75,11 +73,9 @@ class sensor_T:
                 m["info"] = "logUp"
                 if self.server:
                     self.server.write_message(m)
-        print("2")
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)
-        print(message)
         return message
 
     async def aMonitor(self, dt):
