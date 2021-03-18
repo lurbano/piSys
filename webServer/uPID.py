@@ -3,6 +3,7 @@ import board
 from digitalio import DigitalInOut, Direction
 import asyncio
 import time
+import neopixel
 
 defaultPidSettings = {
     "Kp": -1,
