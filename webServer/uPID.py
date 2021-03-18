@@ -54,6 +54,7 @@ class uPID:
         self.startTime = time.time()
         self.runPID = True
         while self.runPID:
+            print("Measuring...")
             m = await asyncio.gather(
                 self.sensor.aRead( True, True, 'live'),
                 asyncio.sleep(dt)
