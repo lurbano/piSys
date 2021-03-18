@@ -81,7 +81,7 @@ $(document).ready(function(){
             $("#pidFlag").css("On")
           }
           else {
-            $("#pidFlag").css("background-color", "red")
+            $("#pidFlag").css("background-color", "green")
             $("#pidFlag").html("Off")
           }
 
