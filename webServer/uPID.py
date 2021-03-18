@@ -37,7 +37,8 @@ class uPID:
         self.startTime = time.time()
         while True:
             T = self.read()
-            print(f'{time.ctime(time.time())}: {round((time.time()-self.startTime)/60} {T}')
+            dt = round((time.time()-self.startTime)/60)
+            print(f'{time.ctime(time.time())}: {dt}: {T}')
             if T < self.target_value:
                 if self.power.value == False:
                     self.power.value = True
