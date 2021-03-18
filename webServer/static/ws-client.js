@@ -71,6 +71,10 @@ $(document).ready(function(){
         if (sData.info == 'PidUp'){
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
+          //only keep last 10 rows in table
+          if (dataT.table.rows.length > 10){
+            dataT.deleteRow(1);
+          }
 
         }
         //PID (END)
@@ -297,6 +301,9 @@ class dataTable{
     tr.appendChild(val);
 
     this.body.appendChild(tr);
+  }
+  deleteRow(n=0){
+    this.table.deleteRow(n);
   }
 
 }
