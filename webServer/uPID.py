@@ -71,6 +71,39 @@ class uPID:
                 if (self.power.value == True):
                     self.power.value = False
 
+    async def aTarget2(self, val, dt):
+        self.target_value = val
+        print(f"Target set: {self.target_value}")
+        self.startTime = time.time()
+        self.log = []
+
+        self.runPID = True
+        print(f'dt: {dt}')
+        while self.runPID:
+            mti = time.time()
+            T = await self.sensor.aRead_basic()
+            print(T)
+            if T < self.target_value:
+                if self.power.value == False:
+                    self.power.value = True
+            else:
+                if (self.power.value == True):
+                    self.power.value = False
+
+            msg = {}
+            msg["info"] = "PidUp"
+            msg["x"] = T
+            msg["t"] = round(time.time()-self.startTime, 4)
+            if self.server:
+                self.server.write_message(msg)
+
+            print(msg)
+            dmt = time.time() - mti
+            if (dmt > 0):
+                asyncio.sleep(dmt)
+
+
+
     # def controller(self):
     #     while True:
     #         T = self.read()

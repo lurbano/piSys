@@ -67,6 +67,14 @@ $(document).ready(function(){
         }
         //TEMPERATURE SENSOR (END)
 
+        //PID
+        if (sData.info == 'PidUp'){
+          dataT.addRow(sData);
+          graphT.addDataPoint(sData);
+
+        }
+        //PID (END)
+
         //LEDs
         // Activate LEDs
         if (sData.info == 'LEDsActive'){
@@ -253,7 +261,9 @@ class dataTable{
     let row = thead.insertRow();
 
     let th = document.createElement('th');
-    th.appendChild(document.createTextNode("time (s)"));
+    let timeHead = document.createTextNode("time (s)");
+    timeHead.id = "timeHead";
+    th.appendChild(timeHead);
     row.appendChild(th);
 
     th = document.createElement('th');
