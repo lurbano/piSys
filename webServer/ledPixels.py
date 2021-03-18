@@ -39,9 +39,6 @@ class ledPixels:
         self.pixels[-2] = (0, 0, 100)
         self.pixels.show()
 
-    def pix(self, n=0, col=(0,0,0)):
-        self.pixels[n] = col
-
     def setOldColors(self, col=None):
         if col == None:
             for i in range(self.nPix):
