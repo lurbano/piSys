@@ -100,7 +100,7 @@ class uPID:
             print(msg)
             dmt = time.time() - mti
             if (dmt > 0):
-                asyncio.sleep(dmt)
+                await asyncio.sleep(dmt)
 
 
 
