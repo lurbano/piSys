@@ -85,6 +85,10 @@ $(document).ready(function(){
             $("#pidFlag").html("Off")
           }
 
+          $("#sensor_measure").html(sData.x + " °C");
+          let now = new Date();
+          $("#sensor_time").html(now.toString().split(" GMT")[0]);
+
         }
         //PID (END)
 
