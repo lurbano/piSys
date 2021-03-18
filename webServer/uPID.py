@@ -24,7 +24,12 @@ class uPID:
         self.saveSettings()
 
         self.sensor = sensor
+
         self.relayPin = relayPin
+        RPi.GPIO.setwarnings(False)
+        RPi.GPIO.setmode(RPi.GPIO.BCM)
+        RPi.GPIO.setup(self.relayPin, RPi.GPIO.OUT)
+
 
     def turnOn(self):
         RPi.GPIO.output(self.relayPin, True)
