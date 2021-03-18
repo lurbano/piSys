@@ -52,12 +52,14 @@ class uPID:
         dt = 3
         self.target_value = val
         self.sensor.startTime = time.time()
+        self.sensor.log = []
+        self.timeLeft = 0
         #self.sensor.startTime = self.startTime
         self.runPID = True
         while self.runPID:
             print("Measuring...")
             m = await asyncio.gather(
-                self.sensor.aRead( True, False, 'live'),
+                self.sensor.aRead( True, True, 'live'),
                 asyncio.sleep(dt)
             )
             print(m)
