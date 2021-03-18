@@ -37,7 +37,7 @@ class uPID:
 
     async def controller(self):
         while True:
-            await m = self.sensor.aRead(getTime=True)
+            m = await self.sensor.aRead(getTime=True)
             print(m)
             await asyncio.sleep(1)
 
