@@ -81,6 +81,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		if ledPix:
 			self.write_message({"info": "LEDsActive", "active": "show", "nPix": nPix})
 			print("LED's Active")
+			ledPix.pixels[0] = (0,0,100)
 		else:
 			self.write_message({"info": "LEDsActive", "active": "hide"})
 			print("LED's Inactive")
@@ -224,6 +225,10 @@ if __name__ == "__main__":
 		wifi = subprocess.check_output(cmd, shell=True).decode("utf-8")
 		#oled.write(wifi, 2)
 		print(wifi)
+
+		if ledPix:
+			ledPix.pixels[0] = (0,100,100)
+			ledPix.pixels.show()
 
 
 		main_loop.start()
