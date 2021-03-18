@@ -65,19 +65,14 @@ class sensor_T:
 
         if getTime:
             message["t"] = time.ctime(time.time())
-        print("pre log")
         if log:
             m = {"x": T_C, "t":round(time.time()-self.startTime, 4)}
             self.log.append(m)
-            print("1")
-            print(self.timeLeft)
-            print(self.server)
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
                 if self.server:
                     self.server.write_message(m)
-        print("2")
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)

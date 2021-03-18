@@ -152,6 +152,13 @@ $(document).ready(function(){
 
   //PID
   $('#pidSet').click(function(){
+    dataT = new dataTable("logData", "°C");
+    dataT.setupTable();
+
+    graphT = new dataGraph("logGraph", "°C");
+    $("#logGraph").css("height", "400px");
+    console.log(graphT.plot.data);
+    
     let target_val = parseFloat($("#pidSetT").val());
     let msg = {
       "what": "pid",
