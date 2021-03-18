@@ -109,10 +109,6 @@ Info:<span id="info">Hi</span>
       <div id="timeLeftT" class="timerBar"></div>
       <div id="countdownData"></div>
     </div>
-    <p>
-    <div id="logGraph"></div>
-    <p>
-    <div id="logData"></div>
   </div>
 </div>
 <!-- TEMPERATURE SENSOR (END) -->
@@ -123,11 +119,19 @@ Info:<span id="info">Hi</span>
   <div class="logging">
     <!-- <input type="button" id="pidStart" value="Start PID"><br> -->
     Target Temperature: <input type="number" id="pidSetT" value="25.0" step="0.1" title="Temperature (°C)">°C
-    <input type="button" id="pidSet" value="Set Temperature">
+    <input type="button" id="pidSet" value="Set Temperature"><br>
+    <input type="button" id="pidStop" value="Stop PID">
   </div>
 </div>
 <!-- PID CONTROLLER (END) -->
 
+<p>
+<div id="dataOutput">
+  <div id="logGraph"></div>
+  <p>
+  <div id="logData"></div>
+</div>
+<p>
 <br>
 <input type="button" id="reboot" value="Reboot Pi">
 <br>

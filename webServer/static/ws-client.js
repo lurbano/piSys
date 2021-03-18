@@ -168,6 +168,12 @@ $(document).ready(function(){
     }
     ws.send(JSON.stringify(msg));
   })
+  $('#pidStop').click(function(){
+    let msg = {
+      "what": "pidStop"
+    }
+    ws.send(JSON.stringify(msg));
+  }
 
   //PID (END)
 
