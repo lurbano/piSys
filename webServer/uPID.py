@@ -62,8 +62,13 @@ class uPID:
                 self.sensor.aRead( True, True, 'live'),
                 asyncio.sleep(dt)
             )
-            print("looping")
             print(m[0]["S"])
+            if T < self.target_value:
+                if self.power.value == False:
+                    self.power.value = True
+            else:
+                if (self.power.value == True):
+                    self.power.value = False
 
     # def controller(self):
     #     while True:
