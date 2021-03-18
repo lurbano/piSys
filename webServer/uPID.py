@@ -28,9 +28,9 @@ class uPID:
         self.sensor = sensor
 
         self.relayPin = relayPin
-        power = DigitalInOut(self.relayPin)
-        power.direction = Direction.OUTPUT
-        power.value = False
+        self.power = DigitalInOut(self.relayPin)
+        self.power.direction = Direction.OUTPUT
+        self.power.value = False
         # gpio.setwarnings(False)
         # gpio.setmode(gpio.BCM)
         # gpio.setup(self.relayPin, gpio.OUT)
@@ -38,11 +38,11 @@ class uPID:
 
     def turnOn(self):
         #gpio.output(self.relayPin, gpio.HIGH)
-        power.value = True
+        self.power.value = True
 
     def turnOff(self):
         #gpio.output(self.relayPin, gpio.LOW)
-        power.value = False
+        self.power.value = False
 
     def read(self):
         return self.sensor.read()
