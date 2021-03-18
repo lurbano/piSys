@@ -34,6 +34,8 @@ class uPID:
         self.power.direction = Direction.OUTPUT
         self.power.value = False
 
+        self.task = None
+
     def target(self, val):
         self.target_value = val
         self.startTime = time.time()

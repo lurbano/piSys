@@ -243,10 +243,16 @@ if __name__ == "__main__":
 
 
 	except:
-		print ("Exception triggered - Tornado Server stopped.")
+
+		if pid:
+			if pid.task:
+				pid.task.cancel()
+			pid.turnOff()
 		if ledPix:
 			ledPix.clear()
 			ledPix.pixels[0] = (100,0,100)
 			ledPix.pixels.show()
+
+		print ("Exception triggered - Tornado Server stopped.")
 
 #End of Program
