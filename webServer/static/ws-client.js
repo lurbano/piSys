@@ -75,7 +75,7 @@ $(document).ready(function(){
           if (dataT.table.rows.length > 10){
             dataT.deleteRow(1);
           }
-          console.log(sData.on);
+
           if (sData.on) {
             $("#pidFlag").css("background-color", "red")
             $("#pidFlag").html("On")
