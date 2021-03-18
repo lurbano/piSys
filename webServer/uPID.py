@@ -1,4 +1,6 @@
 import json
+import RPi.GPIO
+
 
 defaultPidSettings = {
     "Kp": -1,
@@ -13,6 +15,7 @@ class uPID:
     def __init__(self, sensor, pidDir='./pid/'):
         self.pidDir = pidDir
         self.logDir = pidDir + "log/"
+        self.logFile = self.logDir + "activeLog.dat"
 
         self.settings = defaultPidSettings
 
@@ -24,6 +27,9 @@ class uPID:
 
     def read(self):
         return self.sensor.read()
+
+    def log(self):
+        pass
 
 
     def saveSettings(self):
