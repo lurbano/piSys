@@ -1,8 +1,7 @@
 import json
-# import RPi.GPIO as gpio
 import board
 from digitalio import DigitalInOut, Direction
-
+import asyncio
 
 defaultPidSettings = {
     "Kp": -1,
@@ -31,17 +30,22 @@ class uPID:
         self.power = DigitalInOut(self.relayPin)
         self.power.direction = Direction.OUTPUT
         self.power.value = False
-        # gpio.setwarnings(False)
-        # gpio.setmode(gpio.BCM)
-        # gpio.setup(self.relayPin, gpio.OUT)
+
+    async def target(self, val):
+        self.target_value = val
+        asyncio.run(self.controller)
+
+    async def controller(self):
+        while True:
+            await m = self.sensor.aRead(getTime=True)
+            print(m)
+            await asyncio.sleep(1)
 
 
     def turnOn(self):
-        #gpio.output(self.relayPin, gpio.HIGH)
         self.power.value = True
 
     def turnOff(self):
-        #gpio.output(self.relayPin, gpio.LOW)
         self.power.value = False
 
     def read(self):

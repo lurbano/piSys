@@ -71,9 +71,11 @@ class sensor_T:
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
-                self.server.write_message(m)
+                if self.server:
+                    self.server.write_message(m)
         message["info"] = "S-one"
-        self.server.write_message(message)
+        if self.server:
+            self.server.write_message(message)
         return message
 
     async def aMonitor(self, dt):
