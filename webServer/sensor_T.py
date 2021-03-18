@@ -46,6 +46,7 @@ class sensor_T:
 
     async def aRead(self, getTime=False, log=False, update="live"):
         l_yes = False
+        print("Reading")
         while (not l_yes):
             with open(self.device_file) as f:
                 lns = f.readlines()
@@ -62,6 +63,7 @@ class sensor_T:
         message = {}
         message["S"] = T_C
         message["units"] = '°C'
+        print(message)
 
         if getTime:
             message["t"] = time.ctime(time.time())

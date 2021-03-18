@@ -131,6 +131,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				target_val = float(msg["target_value"])
 				if not sensor:
 					sensor = sensor_T(self)
+				else:
+					sensor.cancelTask()
+				sensor = sensor_T(self)
 				if not pid:
 					pid = uPID(sensor, self)
 				print("Starting PID")
