@@ -158,7 +158,9 @@ $(document).ready(function(){
     graphT = new dataGraph("logGraph", "°C");
     $("#logGraph").css("height", "400px");
     console.log(graphT.plot.data);
-    
+
+    timeLog = 1;
+
     let target_val = parseFloat($("#pidSetT").val());
     let msg = {
       "what": "pid",
