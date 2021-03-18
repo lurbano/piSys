@@ -70,6 +70,8 @@ class sensor_T:
             m = {"x": T_C, "t":round(time.time()-self.startTime, 4)}
             self.log.append(m)
             print("1")
+            print(self.timeLeft)
+            print(self.server)
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
