@@ -162,9 +162,11 @@ $(document).ready(function(){
     timeLog = 1;
 
     let target_val = parseFloat($("#pidSetT").val());
+    let dt = parseFloat($("#pidDt").val());
     let msg = {
       "what": "pid",
-      "target_value": target_val
+      "target_value": target_val,
+      "dt": dt
     }
     ws.send(JSON.stringify(msg));
   })

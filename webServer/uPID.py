@@ -48,8 +48,7 @@ class uPID:
                     self.power.value = False
             time.sleep(12)
 
-    async def aTarget(self, val):
-        dt = 3
+    async def aTarget(self, val, dt):
         self.target_value = val
         self.sensor.startTime = time.time()
         self.sensor.log = []
@@ -61,7 +60,7 @@ class uPID:
                 self.sensor.aRead( True, True, 'live'),
                 asyncio.sleep(dt)
             )
-            print(m)
+            print(m[0].S)
 
     # def controller(self):
     #     while True:
