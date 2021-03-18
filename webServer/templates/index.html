@@ -44,6 +44,11 @@
       border: 1px solid red;
       width: 50%;
     }
+
+    #pidFlag {
+      background-color = green;
+      width: 10em;
+    }
   </style>
 
 </head>
@@ -122,6 +127,7 @@ Info:<span id="info">Hi</span>
     <input type="button" id="pidSet" value="Set Temperature"><br>
     dt: <input type="number" id="pidDt" step="0.1" value="12" title="dt"> sec <br>
     <input type="button" id="pidStop" value="Stop PID">
+    <div id="pidFlag">Off</div>
   </div>
 </div>
 <!-- PID CONTROLLER (END) -->
