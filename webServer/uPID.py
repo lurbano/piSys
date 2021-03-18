@@ -1,5 +1,5 @@
 import json
-import RPi.GPIO
+import RPi.GPIO as gpio
 
 
 defaultPidSettings = {
@@ -26,16 +26,16 @@ class uPID:
         self.sensor = sensor
 
         self.relayPin = relayPin
-        RPi.GPIO.setwarnings(False)
-        RPi.GPIO.setmode(RPi.GPIO.BCM)
-        RPi.GPIO.setup(self.relayPin, RPi.GPIO.OUT)
+        gpio.setwarnings(False)
+        gpio.setmode(gpio.BCM)
+        gpio.setup(self.relayPin, gpio.OUT)
 
 
     def turnOn(self):
-        RPi.GPIO.output(self.relayPin, True)
+        gpio.output(self.relayPin, gpio.HIGH)
 
     def turnOff(self):
-        RPi.GPIO.output(self.relayPin, False)
+        gpio.output(self.relayPin, gpio.LOW)
 
     def read(self):
         return self.sensor.read()
