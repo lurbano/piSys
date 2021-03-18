@@ -78,7 +78,7 @@ $(document).ready(function(){
           console.log(sData.on);
           if (sData.on) {
             $("#pidFlag").css("background-color", "red")
-            $("#pidFlag").css("On")
+            $("#pidFlag").html("On")
           }
           else {
             $("#pidFlag").css("background-color", "green")
