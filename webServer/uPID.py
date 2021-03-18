@@ -71,7 +71,7 @@ class uPID:
                 if (self.power.value == True):
                     self.power.value = False
 
-    async def aTarget2(self, val, dt):
+    async def aTarget2(self, val, dt, ledPix=None):
         self.target_value = val
         print(f"Target set: {self.target_value}")
         self.startTime = time.time()
@@ -89,6 +89,12 @@ class uPID:
             else:
                 if (self.power.value == True):
                     self.power.value = False
+
+            if ledPix:
+                if self.power.value:
+                    ledPix[0] = (0, 0, 255)
+                else:
+                    ledPix[0] = (255, 0, 0)
 
             msg = {}
             msg["info"] = "PidUp"
