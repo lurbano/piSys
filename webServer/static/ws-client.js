@@ -77,11 +77,11 @@ $(document).ready(function(){
           }
 
           if (sData.on) {
-            $("#pidFlag").css("background-color", "red")
+            $("#pidData").css("background-color", "firebrick")
             $("#pidFlag").html("On")
           }
           else {
-            $("#pidFlag").css("background-color", "green")
+            $("#pidData").css("background-color", "green")
             $("#pidFlag").html("Off")
           }
 
