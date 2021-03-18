@@ -97,7 +97,7 @@ class uPID:
                     ledPix.pixels[1] = (0, 200, 0)
                 else:
                     ledPix.pixels[1] = (200, 0, 0)
-                self.pixels.show()
+                ledPix.pixels.show()
 
             msg = {}
             msg["info"] = "PidUp"
