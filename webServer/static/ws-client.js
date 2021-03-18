@@ -173,7 +173,7 @@ $(document).ready(function(){
       "what": "pidStop"
     }
     ws.send(JSON.stringify(msg));
-  }
+  })
 
   //PID (END)
 
