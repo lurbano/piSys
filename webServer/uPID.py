@@ -14,7 +14,7 @@ defaultPidSettings = {
 }
 
 class uPID:
-    def __init__(self, sensor, pidDir='./pid/', relayPin=board.D26):
+    def __init__(self, sensor, server=None, pidDir='./pid/', relayPin=board.D26):
         self.pidDir = pidDir
         self.logDir = pidDir + "log/"
         self.logFile = self.logDir + "activeLog.dat"
@@ -26,6 +26,7 @@ class uPID:
         self.saveSettings()
 
         self.sensor = sensor
+        self.server = server
 
         self.relayPin = relayPin
         self.power = DigitalInOut(self.relayPin)
@@ -47,7 +48,17 @@ class uPID:
                     self.power.value = False
             time.sleep(12)
 
-
+    async def aTarget(self, val):
+        dt = 3
+        self.target_value = val
+        self.startTime = time.time()
+        self.runPID = True
+        while self.runPID:
+            m = await asyncio.gather(
+                self.sensor.aRead( True, True, 'live')
+                asyncio.sleep(dt),
+            )
+            print(m)
 
     # def controller(self):
     #     while True:

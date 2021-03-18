@@ -21,6 +21,7 @@ $(document).ready(function(){
 
       $("#logCheck").prop("checked", false);
       $("#timerCheck").prop("checked", false);
+
   };
 
   ws.onmessage = function(evt) {
@@ -148,6 +149,18 @@ $(document).ready(function(){
   });
 
   //TEMPERATURE SENSOR (END)
+
+  //PID
+  $('#pidSet').click(function(){
+    let target_val = parseFloat($("#pidSetT").val());
+    let msg = {
+      "what": "pid",
+      "target_value": target_val
+    }
+    ws.send(JSON.stringify(msg));
+  })
+
+  //PID (END)
 
   //LEDs
   $("#hasLEDs").change(function(){

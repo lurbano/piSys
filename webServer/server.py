@@ -23,6 +23,9 @@ import numpy as np
 #from oledU import *
 from basic import *
 
+from uPID import *
+pid = None
+
 # TEMPERATURE SENSOR (1/2)
 from sensor_T import *
 sensor = None
@@ -119,6 +122,22 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				sensor.task = asyncio.create_task(sensor.aLog( t, dt, update))
 
 			# TEMPERATURE SENSOR (END)
+
+
+
+			# PID
+			global pid
+			if msg["what"] == "pid":
+				target_val = float(msg["target_value"])
+				if not sensor:
+					sensor = sensor_T(self)
+				if not pid:
+					pid = uPID(sensor, self)
+				pid.task = asyncio.create_task(pid.aTarget(target_val))
+
+			# PID (END)
+
+
 
 			# LEDs
 			if msg["what"] == "LEDs":
