@@ -50,11 +50,13 @@ class uPID:
 
     async def aTarget(self, val, dt):
         self.target_value = val
+        print(f"Target set: {self.target_value}")
         self.sensor.startTime = time.time()
         self.sensor.log = []
         self.sensor.timeLeft = 0
         #self.sensor.startTime = self.startTime
         self.runPID = True
+        print(f'dt: {dt}')
         while self.runPID:
             m = await asyncio.gather(
                 self.sensor.aRead( True, True, 'live'),
