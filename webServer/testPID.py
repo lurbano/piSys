@@ -5,6 +5,9 @@ from sensor_T import *
 sensor = sensor_T()
 pid = uPID(sensor)
 
+pid.turnOn()
 for i in range(10):
     print(pid.read())
     time.sleep(1)
+pid.turnOff()
+print("done")
