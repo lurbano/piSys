@@ -91,6 +91,7 @@ class uPID:
                     self.power.value = False
 
             if ledPix:
+                print("pixeling")
                 if self.power.value:
                     ledPix[0] = (0, 0, 255)
                 else:
