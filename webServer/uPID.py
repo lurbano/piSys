@@ -31,7 +31,7 @@ class uPID:
         self.power.direction = Direction.OUTPUT
         self.power.value = False
 
-    async def target(self, val):
+    def target(self, val):
         self.target_value = val
         asyncio.run(self.controller)
 
