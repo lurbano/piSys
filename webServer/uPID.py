@@ -36,6 +36,7 @@ class uPID:
         self.target_value = val
         while True:
             T = self.read()
+            print(f'{time.ctime(time.time())}:  {T}')
             if T < self.target_value:
                 if self.power.value == False:
                     self.power.value = True
