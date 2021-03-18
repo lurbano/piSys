@@ -93,9 +93,9 @@ class uPID:
             if ledPix:
                 print("pixeling")
                 if self.power.value:
-                    ledPix[0] = (0, 0, 255)
+                    ledPix.pixels[0] = (0, 0, 255)
                 else:
-                    ledPix[0] = (255, 0, 0)
+                    ledPix.pixels[0] = (255, 0, 0)
 
             msg = {}
             msg["info"] = "PidUp"
