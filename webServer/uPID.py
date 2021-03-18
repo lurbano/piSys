@@ -53,7 +53,7 @@ class uPID:
         self.target_value = val
         self.sensor.startTime = time.time()
         self.sensor.log = []
-        self.timeLeft = 0
+        self.sensor.timeLeft = 0
         #self.sensor.startTime = self.startTime
         self.runPID = True
         while self.runPID:
