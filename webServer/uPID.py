@@ -63,6 +63,7 @@ class uPID:
                 asyncio.sleep(dt)
             )
             print(m[0]["S"])
+            T = m[0]["S"]
             if T < self.target_value:
                 if self.power.value == False:
                     self.power.value = True
