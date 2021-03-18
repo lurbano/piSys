@@ -62,7 +62,8 @@ class uPID:
                 self.sensor.aRead( True, True, 'live'),
                 asyncio.sleep(dt)
             )
-            print(m[0].S)
+            print("looping")
+            print(m[0]["S"])
 
     # def controller(self):
     #     while True:
