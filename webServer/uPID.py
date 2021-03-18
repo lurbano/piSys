@@ -80,7 +80,7 @@ class uPID:
         self.runPID = True
         print(f'dt: {dt}')
         while self.runPID:
-            mti = time.time()
+            tstepInitial = time.time()
             T = await self.sensor.aRead_basic()
             print(T)
             if T < self.target_value:
@@ -98,9 +98,10 @@ class uPID:
                 self.server.write_message(msg)
 
             print(msg)
-            dmt = time.time() - mti
-            if (dmt > 0):
-                await asyncio.sleep(dmt)
+            dmt = time.time() - tstepInitial
+            timeLeft = dt - dmt
+            if (timeLeft > 0):
+                await asyncio.sleep(timeLeft)
 
 
 
