@@ -63,7 +63,6 @@ class sensor_T:
         message = {}
         message["S"] = T_C
         message["units"] = '°C'
-        print(message)
 
         if getTime:
             message["t"] = time.ctime(time.time())
@@ -78,6 +77,7 @@ class sensor_T:
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)
+        print(message)
         return message
 
     async def aMonitor(self, dt):

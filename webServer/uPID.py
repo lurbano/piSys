@@ -51,7 +51,8 @@ class uPID:
     async def aTarget(self, val):
         dt = 3
         self.target_value = val
-        self.startTime = time.time()
+        self.sensor.startTime = time.time()
+        #self.sensor.startTime = self.startTime
         self.runPID = True
         while self.runPID:
             print("Measuring...")
