@@ -214,9 +214,9 @@ class pidController:
 
         if ledPix:
             if self.power.value:
-                ledPix.pixels[1] = (100, 0, 0)
+                self.ledPix.pixels[1] = (100, 0, 0)
             else:
-                ledPix.pixels[1] = (0, 100, 0)
+                self.ledPix.pixels[1] = (0, 100, 0)
             ledPix.pixels.show()
 
         msg = {}
