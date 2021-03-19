@@ -189,11 +189,12 @@ class pidController:
     def readSettings(self):
         with open(self.settings["settingsFile"], "r") as f:
             sets = json.load(f)
-            print(sets)
 
         if sets["isRunning"]:
+            print("loading existing settings")
             self.settings = sets
 
+        print(self.settings)
         pin = 'D' + str(self.settings.relayPin)
         self.relayPin = board[pin]
         print("Settings Reread")
