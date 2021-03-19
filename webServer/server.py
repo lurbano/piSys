@@ -23,13 +23,10 @@ import numpy as np
 #from oledU import *
 from basic import *
 
-from uPID import *
-pid = None
-pidControl = pidController()
 
 # TEMPERATURE SENSOR (1/2)
 from sensor_T import *
-sensor = None
+sensor = sensor_T()
 # TEMPERATURE SENSOR (END)
 
 # LEDs (1/2)
@@ -51,9 +48,16 @@ try:
 			print("using default (20) pixels: -nPix 20")
 	ledPix = ledPixels(nPix, ledPin)
 except:
-	ledPix = False
+	ledPix = Null
 print("ledPix:", ledPix)
 # LED's (END)
+
+# PID
+from uPID import *
+pid = None
+pidControl = pidController()
+
+# PID (END)
 
 #Tornado Folder Paths
 settings = dict(

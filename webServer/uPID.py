@@ -161,8 +161,7 @@ class uPID:
 
 
 class pidController:
-    def __init__(self, main_loop=None):
-        self.main_loop = main_loop
+    def __init__(self):
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
@@ -202,7 +201,7 @@ class pidController:
                 asyncio.sleep(self.dt),
                 self.pidStep()
             )
-            
+
         self.writeSettings()
 
         if self.ledPix:
