@@ -196,7 +196,7 @@ class pidController:
 
         print(self.settings)
         pin = 'D' + str(self.settings["relayPin"])
-        self.relayPin = board[pin]
+        self.relayPin = getattr(board, pin)
         print("Settings Reread")
 
     async def hello(self):
