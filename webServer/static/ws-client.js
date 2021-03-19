@@ -93,6 +93,8 @@ $(document).ready(function(){
         //PID (END)
         if (sData.info == 'pidSets'){
           console.log(sData.sets);
+          $("#pidSetT").val(parseFloat(sData.sets.target));
+          $("#pidDt").val(parseFloat(sData.sets.dt));
         }
         //PID2
 
