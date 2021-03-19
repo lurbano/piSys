@@ -6,6 +6,7 @@ import time
 import neopixel
 
 defaultPidSettings = {
+    "relayPin": 26,
     "Kp": -1,
     "Ki": 0,
     "Kd": -100,
@@ -165,6 +166,12 @@ class pidController:
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
+    def makePID(self, sensor, server, ledPix):
+        self.sensor = sensor
+        self.server = server
+        self.pid = uPID(sensor, server)
+
+    async runPID(target, dt, ledPix)
 
     async def getSettings(self):
         await self.writeSettings()
@@ -185,10 +192,21 @@ class pidController:
 
         if sets["isRunning"]:
             self.settings = sets
+
+        pin = 'D' + str(self.settings.relayPin)
+        self.relayPin = board[pin]
         print("Settings Reread")
 
     async def hello(self):
         print("hello")
+
+# def getBoardPin(n):
+#     pins ={
+#         17: board.D17,
+#         25: board.D25,
+#         26: board.D26
+#     }
+#     return pins.get(n, f"Pin number ({n}) not in list (def getBoardPin(n)")
 
 # pid_step = 0
 # async def pidController():
