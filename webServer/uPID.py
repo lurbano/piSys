@@ -111,7 +111,7 @@ class uPID:
             if self.server:
                 self.server.write_message(msg)
 
-            self.logData(msg)
+            #self.logData(msg)
 
             print(msg)
             dmt = time.time() - tstepInitial
