@@ -140,7 +140,7 @@ class uPID:
     def logData(self, msg):
         print(self.logFile)
         with open(self.logFile, "a") as f:
-            f.write(f'{msg["t"]},{msg["x"]},{msg["on"]}')
+            f.write(f'{msg["t"]},{msg["x"]},{msg["on"]}\n')
 
 
     def saveSettings(self):
