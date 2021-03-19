@@ -13,7 +13,8 @@ defaultPidSettings = {
     "units": "°C",
     "dt": 5,
     "pidDir": './pid/',
-    "logFileName": 'active.log'
+    "logFileName": 'active.log',
+    "isRunning": False
 }
 defaultPidSettings["logDir"] = defaultPidSettings["pidDir"] + "dataLogs/"
 
@@ -23,10 +24,11 @@ defaultPidSettings["settingsFile"] = defaultPidSettings["pidDir"] + "settings.js
 
 class uPID:
     def __init__(self, sensor, server=None, pidDir=defaultPidSettings["pidDir"], relayPin=board.D26, logFileName=defaultPidSettings["logFileName"]):
+
         self.settings = defaultPidSettings.copy()
         self.pidDir = pidDir
-        self.logDir = self.settings["logDir"]   #pidDir + "dataLogs/"
-        self.logFile = self.settings["logFile"]  #elf.logDir + logFileName
+        self.logDir = self.settings["logDir"]
+        self.logFile = self.settings["logFile"]
         self.settingsFile = self.settings["settingsFile"]
 
         #self.saveSettings()
@@ -164,11 +166,16 @@ class pidControl:
 
 
     async def getSettings(self):
+        self.writeSettings()
         for i in range(10):
             await asyncio.gather(
                 asyncio.sleep(2),
                 self.hello()
             )
+
+    async def writeSettings(self):
+        with open(self.settings.settingsFile, "w") as f:
+            f.write(json.dumps(self.settings))
 
     async def hello(self):
         print("hello")
