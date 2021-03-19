@@ -174,7 +174,7 @@ class pidControl:
             )
 
     async def writeSettings(self):
-        with open(self.settings.settingsFile, "w") as f:
+        with open(self.settings["settingsFile"], "w") as f:
             f.write(json.dumps(self.settings))
 
     async def hello(self):
