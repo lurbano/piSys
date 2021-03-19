@@ -177,6 +177,14 @@ class pidControl:
         with open(self.settings["settingsFile"], "w") as f:
             f.write(json.dumps(self.settings))
 
+    def readSettings(self):
+        with open(self.settings["settingsFile"], "r") as f:
+            sets = json.load(f)
+
+        if sets["isRunning"]:
+            self.settings = sets
+        print("Settings Rerad")
+
     async def hello(self):
         print("hello")
 
