@@ -245,13 +245,13 @@ if __name__ == "__main__":
 		sensor2 = sensor_T()
 		pid2 = uPID(sensor2, logFileName="active2.log")
 		###########
-		pid_client = PIDClient(main_loop)
+		#pid_client = PIDClient(main_loop)
 
 		main_loop.start()
 
 		#pidController(pid2)
 		#main_loop.spawn_callback(pidController, pid)
-		
+
 
 
 
