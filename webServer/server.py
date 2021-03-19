@@ -218,7 +218,7 @@ if __name__ == "__main__":
 		http_server = tornado.httpserver.HTTPServer(application)
 		http_server.listen(PORT)
 		print("hello")
-		main_loop = tornado.ioloop.IOLoop.instance()
+		main_loop = tornado.ioloop.IOLoop.current()
 
 		print ("Tornado Server started")
 
