@@ -166,13 +166,67 @@ class pidController:
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
-    def makePID(self, sensor, server, ledPix):
+    async def runPID(self, sensor, server,
+               ledPix = None,
+               target_val = self.settings["target"],
+               dt = self.settings["dt"]):
         self.sensor = sensor
         self.server = server
-        self.pid = uPID(sensor, server)
+        self.ledPix = ledPix
 
-    async def runPID(target, dt, ledPix):
-        pass
+        self.target = float(target_val)
+        self.dt = float(dt)
+
+        self.startTime = time.time()
+        self.log = []
+
+        self.runPID = True
+        if self.ledPix:
+            ledPix.pixels[0] = (0, 0, 100)
+            ledPix.pixels.show()
+
+        while self.runPID:
+            await asyncio.gather(
+                asyncio.sleep(self.dt),
+                self.pidStep()
+            )
+
+        #self.pid = uPID(sensor, server)
+
+    async def pidStep(self):
+        tstepStart = time.time()
+        T = await self.sensor.aRead_basic()
+        print(T)
+
+        if T < self.target:
+            if self.power.value == False:
+                self.power.value = True
+        else:
+            if (self.power.value == True):
+                self.power.value = False
+
+        if ledPix:
+            if self.power.value:
+                ledPix.pixels[1] = (100, 0, 0)
+            else:
+                ledPix.pixels[1] = (0, 100, 0)
+            ledPix.pixels.show()
+
+        msg = {}
+        msg["info"] = "PidUp"
+        msg["x"] = T
+        msg["t"] = round(time.time()-self.startTime, 4)
+        msg["on"] = self.power.value
+        if self.server:
+            self.server.write_message(msg)
+        print(msg)
+
+        # dmt = time.time() - tstepStart
+        # timeLeft = dt - dmt
+        # if (timeLeft > 0):
+        #     await asyncio.sleep(timeLeft)
+
+
 
     async def getSettings(self):
         await self.writeSettings()
@@ -196,9 +250,17 @@ class pidController:
 
         print("Settings")
         print(self.settings)
-        pin = 'D' + str(self.settings["relayPin"])
-        self.relayPin = getattr(board, pin)
+
+        self.setRelayPin(self.settings["relayPin"])
+
         print("Settings Sets")
+
+    def setRelayPin(self, n):
+        pin = 'D' + str(n)
+        self.relayPin = getattr(board, pin)
+        self.power = DigitalInOut(self.relayPin)
+        self.power.direction = Direction.OUTPUT
+        self.power.value = False
 
     async def hello(self):
         print("hello")
