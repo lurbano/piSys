@@ -168,14 +168,21 @@ class pidController:
 
     async def runPID(self, sensor, server,
                ledPix = None,
-               target_val = self.settings["target"],
-               dt = self.settings["dt"]):
+               target_val = None,
+               dt = None):
         self.sensor = sensor
         self.server = server
         self.ledPix = ledPix
 
-        self.target = float(target_val)
-        self.dt = float(dt)
+        if not target_val:
+            self.target = float(self.settings["target"])
+        else:
+            self.target = float(target_val)
+
+        if not dt:
+            self.dt = float(self.settings['dt'])
+        else:
+            self.dt = float(dt)
 
         self.startTime = time.time()
         self.log = []
