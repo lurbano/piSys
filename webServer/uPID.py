@@ -15,16 +15,19 @@ defaultPidSettings = {
     "pidDir": './pid/',
     "logFileName": 'active.log'
 }
+defaultPidSettings["logDir"] = defaultPidSettings["pidDir"] + "dataLogs/"
+
+defaultPidSettings["logFile"] = defaultPidSettings["logDir"] + defaultPidSettings["logFileName"]
+
+defaultPidSettings["settingsFile"] = defaultPidSettings["pidDir"] + "settings.json"
 
 class uPID:
     def __init__(self, sensor, server=None, pidDir=defaultPidSettings["pidDir"], relayPin=board.D26, logFileName=defaultPidSettings["logFileName"]):
+        self.settings = defaultPidSettings.copy()
         self.pidDir = pidDir
-        self.logDir = pidDir + "dataLogs/"
-        self.logFile = self.logDir + logFileName
-
-        self.settings = defaultPidSettings
-
-        self.settingsFile = pidDir + "settings.json"
+        self.logDir = self.settings["logDir"]   #pidDir + "dataLogs/"
+        self.logFile = self.settings["logFile"]  #elf.logDir + logFileName
+        self.settingsFile = self.settings["settingsFile"]
 
         #self.saveSettings()
 
