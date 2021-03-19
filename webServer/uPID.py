@@ -20,7 +20,7 @@ defaultPidSettings["logDir"] = defaultPidSettings["pidDir"] + "dataLogs/"
 
 defaultPidSettings["logFile"] = defaultPidSettings["logDir"] + defaultPidSettings["logFileName"]
 
-defaultPidSettings["settingsFile"] = defaultPidSettings["pidDir"] + "settings.log"
+defaultPidSettings["settingsFile"] = defaultPidSettings["pidDir"] + "settings.json"
 
 class uPID:
     def __init__(self, sensor, server=None, pidDir=defaultPidSettings["pidDir"], relayPin=board.D26, logFileName=defaultPidSettings["logFileName"]):
