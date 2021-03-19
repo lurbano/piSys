@@ -248,11 +248,8 @@ if __name__ == "__main__":
 
 		main_loop.start()
 
-		for i in range(20):
-			m = await asyncio.gather(
-		        pidController(pid2),
-		        asyncio.sleep(1)
-		    )
+		pidController(pid2)
+
 
 
 	except:
