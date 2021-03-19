@@ -160,7 +160,7 @@ class uPID:
 
 
 class pidControl:
-    def __init__(self, main_loop):
+    def __init__(self, main_loop=None):
         self.main_loop = main_loop
         self.settings = defaultPidSettings.copy()
         self.readSettings()

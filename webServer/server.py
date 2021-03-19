@@ -25,6 +25,7 @@ from basic import *
 
 from uPID import *
 pid = None
+pidControl = pidControl()
 
 # TEMPERATURE SENSOR (1/2)
 from sensor_T import *
@@ -219,6 +220,7 @@ application = tornado.web.Application([
   ], **settings)
 
 
+
 if __name__ == "__main__":
 	try:
 		http_server = tornado.httpserver.HTTPServer(application)
@@ -246,7 +248,7 @@ if __name__ == "__main__":
 		# sensor2 = sensor_T()
 		# pid2 = uPID(sensor2, logFileName="active2.log")
 		###########
-		pidControl = pidControl(main_loop)
+		#pidControl = pidControl(main_loop)
 
 		main_loop.add_callback(pidControl.getSettings)
 
