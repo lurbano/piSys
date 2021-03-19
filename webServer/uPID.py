@@ -4,7 +4,6 @@ from digitalio import DigitalInOut, Direction
 import asyncio
 import time
 import neopixel
-import pprint
 
 defaultPidSettings = {
     "relayPin": 26,
@@ -196,7 +195,7 @@ class pidController:
             self.settings = sets
 
         print("Settings")
-        pprint(self.settings)
+        print(self.settings)
         pin = 'D' + str(self.settings["relayPin"])
         self.relayPin = getattr(board, pin)
         print("Settings Sets")
