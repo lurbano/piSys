@@ -24,7 +24,7 @@ class uPID:
 
         self.settingsFile = pidDir + "settings.json"
 
-        self.saveSettings()
+        #self.saveSettings()
 
         self.sensor = sensor
         self.server = server
@@ -152,16 +152,16 @@ class uPID:
             self.settings = json.load(f)
 
 
-pid_step = 0
-async def pidController():
-    for i in range(20):
-        m = await asyncio.gather(
-            print("hello"),
-            asyncio.sleep(1)
-        )
-
-class PIDClient:
-
-    def __inti__(self, main_loop):
-        #main_loop.add_callback(pidController)
-        a=1
+# pid_step = 0
+# async def pidController():
+#     for i in range(20):
+#         m = await asyncio.gather(
+#             print("hello"),
+#             asyncio.sleep(1)
+#         )
+#
+# class PIDClient:
+#
+#     def __inti__(self, main_loop):
+#         #main_loop.add_callback(pidController)
+#         a=1
