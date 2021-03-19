@@ -290,7 +290,7 @@ if __name__ == "__main__":
 		###########
 		#pidControl = pidControl(main_loop)
 
-		main_loop.add_callback(pidControl.getSettings)
+		#main_loop.add_callback(pidControl.getSettings)
 
 		main_loop.start()
 

@@ -244,13 +244,13 @@ class pidController:
             self.ledPix.pixels.show()
 
 
-    async def getSettings(self):
-        await self.writeSettings()
-        for i in range(10):
-            await asyncio.gather(
-                asyncio.sleep(2),
-                self.hello()
-            )
+    # async def getSettings(self):
+    #     await self.writeSettings()
+    #     for i in range(10):
+    #         await asyncio.gather(
+    #             asyncio.sleep(2),
+    #             self.hello()
+    #         )
 
     async def writeSettings(self):
         with open(self.settings["settingsFile"], "w") as f:
