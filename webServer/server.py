@@ -52,10 +52,12 @@ except:
 print("ledPix:", ledPix)
 # LED's (END)
 
+websocket_clients = []
+
 # PID
 from uPID import *
 pid = None
-pidControl = pidController()
+pidControl = pidController(websocket_clients)
 
 # PID (END)
 
@@ -65,8 +67,6 @@ settings = dict(
 	static_path = os.path.join(os.path.dirname(__file__), "static")
 	)
 
-websocket_clients = []
-#pyPath = '/home/pi/rpi-led-strip/pyLED/'
 
 #Tonado server port
 PORT = 8060
@@ -177,35 +177,6 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					ledPix.pixels[0] = (0,100,0)
 					ledPix.pixels.show()
 			#PID2 (END)
-
-			# #PID
-			# if msg["what"] == "pid_old":
-			# 	target_val = float(msg["target_value"])
-			# 	dt = float(msg["dt"])
-			# 	if not sensor:
-			# 		sensor = sensor_T(self)
-			# 	else:
-			# 		sensor.cancelTask()
-			# 	sensor = sensor_T(self)
-			# 	if ledPix:
-			# 		ledPix.clear()
-			# 	self.write_message({"info": "hello", "reply":"r1"})
-			# 	if not pid:
-			# 		pid = uPID(sensor, self)
-			# 	# print("Starting PID")
-			# 	self.write_message({"info": "hello", "reply":"starting PID"})
-			# 	pid.task = asyncio.create_task( pid.aTarget2(target_val, dt, ledPix) )
-			#
-			# if msg["what"] == "pidStop_old":
-			# 	if pid:
-			# 		pid.task.cancel()
-			# 		pid.turnOff()
-			# 	if ledPix:
-			# 		ledPix.clear()
-			# 		ledPix.pixels[0] = (0,100,0)
-			# 		ledPix.pixels.show()
-			# # PID (END)
-
 
 
 			# LEDs

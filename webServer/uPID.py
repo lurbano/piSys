@@ -161,7 +161,8 @@ class uPID:
 
 
 class pidController:
-    def __init__(self):
+    def __init__(self, clients):
+        self.clients = clients
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
@@ -174,6 +175,13 @@ class pidController:
         self.sensor = sensor
         self.server = server
         self.ledPix = ledPix
+
+        msg = {
+			"info": "pidSets",
+			"sets": "Starting PID Now"
+		}
+        for client in self.clients:
+            client.write_message(msg)
 
         if not target_val:
             self.target = float(self.settings["target"])
