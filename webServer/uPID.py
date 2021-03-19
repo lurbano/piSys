@@ -217,7 +217,7 @@ class pidController:
                 self.ledPix.pixels[1] = (100, 0, 0)
             else:
                 self.ledPix.pixels[1] = (0, 100, 0)
-            ledPix.pixels.show()
+            self.ledPix.pixels.show()
 
         msg = {}
         msg["info"] = "PidUp"
