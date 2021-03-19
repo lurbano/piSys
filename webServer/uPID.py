@@ -161,7 +161,7 @@ class pidControl:
         for i in range(10):
             await asyncio.gather(
                 print (f'hello {i}'),
-                asyncio.sleep(1)
+                await asyncio.sleep(1)
             )
 
 # pid_step = 0
