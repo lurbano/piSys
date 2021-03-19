@@ -160,9 +160,12 @@ class pidControl:
     async def getSettings(self):
         for i in range(10):
             await asyncio.gather(
-                print (f'hello {i}'),
-                await asyncio.sleep(1)
+                asyncio.sleep(2),
+                self.hello()
             )
+
+    async def hello(self):
+        print("hello")
 
 # pid_step = 0
 # async def pidController():
