@@ -91,12 +91,12 @@ $(document).ready(function(){
 
         }
         //PID (END)
+        //PID2
         if (sData.info == 'pidSets'){
           console.log(sData.sets);
           $("#pidSetT").val(parseFloat(sData.sets.target));
           $("#pidDt").val(parseFloat(sData.sets.dt));
         }
-        //PID2
 
         //PID2 (END)
 
@@ -207,6 +207,7 @@ $(document).ready(function(){
     let msg = {
       "what": "pidStop"
     }
+    console.log("Stopping PID");
     ws.send(JSON.stringify(msg));
   })
 
