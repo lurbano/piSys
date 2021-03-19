@@ -235,7 +235,7 @@ class pidController:
     def stop(self):
         print("stopping task")
         self.settings["isRunning"] = False
-        self.task.cancel()
+        #self.task.cancel()
         self.power.value = False
 
         if self.ledPix:

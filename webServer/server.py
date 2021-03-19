@@ -156,7 +156,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				self.write_message({"info": "hello", "reply":"r1"})
 				# if not pid:
 				# 	pid = uPID(sensor, self)
-				pid.task = asyncio.create_task( pidControl.runPID(sensor, self, ledPix, target_val, dt) )
+				pidControl.task = asyncio.create_task( pidControl.runPID(sensor, self, ledPix, target_val, dt) )
 				# print("Starting PID")
 				self.write_message({"info": "hello", "reply":"starting PID"})
 				#pid.task = asyncio.create_task( pid.aTarget2(target_val, dt, ledPix) )
@@ -164,7 +164,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			if msg["what"] == "pidStop":
 				print('Stopping PID')
-				if pid:
+				if pidControl.task:
 					#pid.task.cancel()
 					#pid.turnOff()
 					pidControl.stop()
