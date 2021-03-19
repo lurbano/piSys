@@ -246,9 +246,9 @@ if __name__ == "__main__":
 		# sensor2 = sensor_T()
 		# pid2 = uPID(sensor2, logFileName="active2.log")
 		###########
-		main_pid = pidControl(main_loop)
+		pidControl = pidControl(main_loop)
 
-		main_loop.add_callback(main_pid.getSettings)
+		main_loop.add_callback(pidControl.getSettings)
 
 		main_loop.start()
 

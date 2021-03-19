@@ -9,13 +9,15 @@ defaultPidSettings = {
     "Kp": -1,
     "Ki": 0,
     "Kd": -100,
-    "set": 25,
+    "target": 25,
     "units": "°C",
-    "dt": 5
+    "dt": 5,
+    "pidDir": './pid/',
+    "logFileName": 'active.log'
 }
 
 class uPID:
-    def __init__(self, sensor, server=None, pidDir='./pid/', relayPin=board.D26, logFileName="active.log"):
+    def __init__(self, sensor, server=None, pidDir=defaultPidSettings["pidDir"], relayPin=board.D26, logFileName=defaultPidSettings["logFileName"]):
         self.pidDir = pidDir
         self.logDir = pidDir + "dataLogs/"
         self.logFile = self.logDir + logFileName
@@ -155,7 +157,8 @@ class uPID:
 class pidControl:
     def __init__(self, main_loop):
         self.main_loop = main_loop
-        #main_loop.run_until_complete( self.getSettings)
+        self.settings = defaultPidSettings.copy()
+
 
     async def getSettings(self):
         for i in range(10):
