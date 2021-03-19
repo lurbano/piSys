@@ -166,6 +166,8 @@ class pidController:
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
+        self.task = None
+
     async def runPID(self, sensor, server,
                ledPix = None,
                target_val = None,
@@ -205,7 +207,7 @@ class pidController:
 
         if self.ledPix:
             self.ledPix.clear()
-            self.ledPix.pixels[0] = (0,100,0)
+            self.ledPix.pixels[0] = (100,100,0)
             self.ledPix.pixels.show()
 
     async def pidStep(self):
@@ -238,6 +240,9 @@ class pidController:
 
     def stop(self):
         self.settings["isRunning"] = False
+        self.task.cancel()
+        self.power.value = False
+
         if self.ledPix:
             self.ledPix.clear()
             self.ledPix.pixels[0] = (100,0,0)
