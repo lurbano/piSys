@@ -154,8 +154,15 @@ class uPID:
 
 class pidControl:
     def __init__(self):
+        await self.getSettings
+
+    async def getSettings(self):
         for i in range(10):
-            print (f'hello {i}')
+            await asyncio.gather(
+                print (f'hello {i}',
+                asyncio.sleep(1)
+                )
+
 # pid_step = 0
 # async def pidController():
 #     for i in range(20):
