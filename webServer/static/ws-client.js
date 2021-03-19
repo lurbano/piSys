@@ -91,6 +91,12 @@ $(document).ready(function(){
 
         }
         //PID (END)
+        if (sData.info == 'pidSets'){
+          console.log(sData.sets);
+        }
+        //PID2
+
+        //PID2 (END)
 
         //LEDs
         // Activate LEDs
