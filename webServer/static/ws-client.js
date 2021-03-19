@@ -193,7 +193,6 @@ $(document).ready(function(){
       "target_value": target_val,
       "dt": dt
     }
-    console.log("sending message");
     ws.send(JSON.stringify(msg));
   })
   $('#pidStop').click(function(){

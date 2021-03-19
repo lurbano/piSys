@@ -25,7 +25,7 @@ from basic import *
 
 from uPID import *
 pid = None
-pidControl = pidControl()
+pidControl = pidController()
 
 # TEMPERATURE SENSOR (1/2)
 from sensor_T import *
@@ -81,6 +81,15 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 		self.write_message('{"who": "server", "info": "on"}')
 		#self.oled = oledU(128,32)
+
+		#PID2
+		msg = {
+			"info": "pidSets",
+			"sets": pidControl.settings
+		}
+		self.write_message(msg)
+
+		#PID2(END)
 
 		# LEDs
 		if ledPix:

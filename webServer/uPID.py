@@ -159,7 +159,7 @@ class uPID:
             self.settings = json.load(f)
 
 
-class pidControl:
+class pidController:
     def __init__(self, main_loop=None):
         self.main_loop = main_loop
         self.settings = defaultPidSettings.copy()
