@@ -111,6 +111,8 @@ class uPID:
             if self.server:
                 self.server.write_message(msg)
 
+            self.logData(msg)
+
             print(msg)
             dmt = time.time() - tstepInitial
             timeLeft = dt - dmt
@@ -135,8 +137,9 @@ class uPID:
     def read(self):
         return self.sensor.read()
 
-    def log(self):
-        pass
+    def logData(self, msg):
+        with open(self.logFile, "a") as f:
+            f.write(f'{msg["t"],msg["x"],msg["on"]}')
 
 
     def saveSettings(self):

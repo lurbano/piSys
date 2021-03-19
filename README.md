@@ -19,6 +19,16 @@ Pins:
 * 3v3: for 3.3V power
 * GND: ground
 
+## Attaching the LED strip [HARDWARE]
+Using a WS281x strip that has three contacts for input voltage (Vin), controller signal (D0), and ground (GND):
+* Vin connects to any 5V pin,
+* DO connects to GPIO 18 by default (set in server.py as variable: ledPin)
+* GND connects any ground pin
+
+## Connecting relay
+Relay default connections:
+* GND(-) connects to any ground pin
+* D(+) connects to GPIO 26
 
 # Software: Set up Raspberry Pi SD Card
 
@@ -46,11 +56,20 @@ Enable Interfaces
 sudo reboot
 ```
 
+# Install neopixel and rpi_ws281x
+To be able to control the led strip.
 
-# Installing this software: 
+ ```console
+sudo pip3 install adafruit-circuitpython-neopixel
+sudo pip3 install rpi_ws281x
+```
+
+
+
+# Installing this software:
 From your home directory clone the github repository.
 ```console
-git clone https://github.com/lurbano/piSensors.git
+git clone https://github.com/lurbano/piSys.git
 ```
 
 # Setting up Server
