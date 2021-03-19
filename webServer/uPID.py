@@ -189,8 +189,8 @@ class pidController:
 
         self.runPID = True
         if self.ledPix:
-            ledPix.pixels[0] = (0, 0, 100)
-            ledPix.pixels.show()
+            self.ledPix.pixels[0] = (0, 0, 100)
+            self.ledPix.pixels.show()
 
         while self.runPID:
             await asyncio.gather(
