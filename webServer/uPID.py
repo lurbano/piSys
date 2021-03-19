@@ -187,18 +187,26 @@ class pidController:
         self.startTime = time.time()
         self.log = []
 
-        self.runPID = True
+        #self.runPID = True
         if self.ledPix:
             self.ledPix.pixels[0] = (0, 0, 100)
             self.ledPix.pixels.show()
 
-        while self.runPID:
+        self.settings["isRunning"] = True
+        self.writeSettings()
+
+        while self.settings["isRunning"]:
             await asyncio.gather(
                 asyncio.sleep(self.dt),
                 self.pidStep()
             )
 
-        #self.pid = uPID(sensor, server)
+        self.writeSettings()
+
+        if self.ledPix:
+            self.ledPix.clear()
+            self.ledPix.pixels[0] = (0,100,0)
+            self.ledPix.pixels.show()
 
     async def pidStep(self):
         tstepStart = time.time()
@@ -226,13 +234,14 @@ class pidController:
         msg["on"] = self.power.value
         if self.server:
             self.server.write_message(msg)
-        print(msg)
+        #print(msg)
 
-        # dmt = time.time() - tstepStart
-        # timeLeft = dt - dmt
-        # if (timeLeft > 0):
-        #     await asyncio.sleep(timeLeft)
-
+    def stop(self):
+        self.settings["isRunning"] = False 
+        if self.ledPix:
+            self.ledPix.clear()
+            self.ledPix.pixels[0] = (100,0,0)
+            self.ledPix.pixels.show()
 
 
     async def getSettings(self):
@@ -271,25 +280,3 @@ class pidController:
 
     async def hello(self):
         print("hello")
-
-# def getBoardPin(n):
-#     pins ={
-#         17: board.D17,
-#         25: board.D25,
-#         26: board.D26
-#     }
-#     return pins.get(n, f"Pin number ({n}) not in list (def getBoardPin(n)")
-
-# pid_step = 0
-# async def pidController():
-#     for i in range(20):
-#         m = await asyncio.gather(
-#             print("hello"),
-#             asyncio.sleep(1)
-#         )
-#
-# class PIDClient:
-#
-#     def __inti__(self, main_loop):
-#         #main_loop.add_callback(pidController)
-#         a=1

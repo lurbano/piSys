@@ -164,8 +164,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			if msg["what"] == "pidStop":
 				if pid:
-					pid.task.cancel()
-					pid.turnOff()
+					#pid.task.cancel()
+					#pid.turnOff()
+					pidControl.stop()
 				if ledPix:
 					ledPix.clear()
 					ledPix.pixels[0] = (0,100,0)
