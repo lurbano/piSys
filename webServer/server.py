@@ -248,7 +248,8 @@ if __name__ == "__main__":
 
 		main_loop.start()
 
-		pidController(pid2)
+		#pidController(pid2)
+		main_loop.spawn_callback(pidController, pid)
 
 
 
