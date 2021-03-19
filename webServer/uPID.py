@@ -154,7 +154,8 @@ class uPID:
 
 class pidControl:
     def __init__(self, main_loop):
-        main_loop.run_until_complete( self.getSettings)
+        self.main_loop = main_loop
+        #main_loop.run_until_complete( self.getSettings)
 
     async def getSettings(self):
         for i in range(10):
