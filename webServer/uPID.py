@@ -152,6 +152,10 @@ class uPID:
             self.settings = json.load(f)
 
 
+class pidControl:
+    def __init__(self):
+        for i in range(10):
+            print (f'hello {i}')
 # pid_step = 0
 # async def pidController():
 #     for i in range(20):
