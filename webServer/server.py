@@ -163,6 +163,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 
 			if msg["what"] == "pidStop":
+				print('Stopping PID')
 				if pid:
 					#pid.task.cancel()
 					#pid.turnOff()

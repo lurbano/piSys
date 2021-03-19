@@ -233,6 +233,7 @@ class pidController:
         #print(msg)
 
     def stop(self):
+        print("stopping task")
         self.settings["isRunning"] = False
         self.task.cancel()
         self.power.value = False
