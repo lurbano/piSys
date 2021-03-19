@@ -18,7 +18,7 @@ class uPID:
     def __init__(self, sensor, server=None, pidDir='./pid/', relayPin=board.D26):
         self.pidDir = pidDir
         self.logDir = pidDir + "dataLogs/"
-        self.logFile = self.logDir + "activeLog.dat"
+        self.logFile = self.logDir + "active.log"
 
         self.settings = defaultPidSettings
 
