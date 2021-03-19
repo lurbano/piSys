@@ -203,12 +203,6 @@ class pidController:
                 self.pidStep()
             )
 
-        await self.writeSettings()
-
-        if self.ledPix:
-            self.ledPix.clear()
-            self.ledPix.pixels[0] = (100,100,0)
-            self.ledPix.pixels.show()
 
     async def pidStep(self):
         tstepStart = time.time()
@@ -246,6 +240,13 @@ class pidController:
         if self.ledPix:
             self.ledPix.clear()
             self.ledPix.pixels[0] = (100,0,0)
+            self.ledPix.pixels.show()
+
+        await self.writeSettings()
+
+        if self.ledPix:
+            self.ledPix.clear()
+            self.ledPix.pixels[0] = (100,100,0)
             self.ledPix.pixels.show()
 
 
