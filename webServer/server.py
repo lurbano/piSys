@@ -60,6 +60,7 @@ settings = dict(
 	static_path = os.path.join(os.path.dirname(__file__), "static")
 	)
 
+websocket_clients = []
 #pyPath = '/home/pi/rpi-led-strip/pyLED/'
 
 #Tonado server port
@@ -74,6 +75,8 @@ class MainHandler(tornado.web.RequestHandler):
 class WSHandler(tornado.websocket.WebSocketHandler):
 	def open(self):
 		print ('[WS] Connection was opened.')
+		websocket_clients.append(self)
+
 		self.write_message('{"who": "server", "info": "on"}')
 		#self.oled = oledU(128,32)
 
@@ -204,6 +207,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 
 	def on_close(self):
+		websocket_clients.remove(self)
 		print ('[WS] Connection was closed.')
 
 
