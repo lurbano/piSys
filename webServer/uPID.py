@@ -166,7 +166,7 @@ class pidControl:
 
 
     async def getSettings(self):
-        self.writeSettings()
+        await self.writeSettings()
         for i in range(10):
             await asyncio.gather(
                 asyncio.sleep(2),
