@@ -171,7 +171,8 @@ class pidController:
         self.server = server
         self.pid = uPID(sensor, server)
 
-    async runPID(target, dt, ledPix)
+    async def runPID(target, dt, ledPix):
+        pass
 
     async def getSettings(self):
         await self.writeSettings()
