@@ -236,6 +236,10 @@ if __name__ == "__main__":
 			ledPix.pixels[0] = (0,100,100)
 			ledPix.pixels.show()
 
+		###########
+		sensor2 = sensor_T()
+		pid2 = uPID(sensor2, logFileName="active2.log")
+		###########
 
 		main_loop.start()
 

@@ -15,10 +15,10 @@ defaultPidSettings = {
 }
 
 class uPID:
-    def __init__(self, sensor, server=None, pidDir='./pid/', relayPin=board.D26):
+    def __init__(self, sensor, server=None, pidDir='./pid/', relayPin=board.D26, logFileName="active.log"):
         self.pidDir = pidDir
         self.logDir = pidDir + "dataLogs/"
-        self.logFile = self.logDir + "active.log"
+        self.logFile = self.logDir + logFileName
 
         self.settings = defaultPidSettings
 
