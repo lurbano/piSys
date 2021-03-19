@@ -177,8 +177,8 @@ class pidController:
         self.ledPix = ledPix
 
         msg = {
-			"info": "pidSets",
-			"sets": "Starting PID Now"
+			"info": "pidMsg",
+			"msg": "Starting PID Now"
 		}
         for client in self.clients:
             client.write_message(msg)
