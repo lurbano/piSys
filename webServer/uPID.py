@@ -194,10 +194,11 @@ class pidController:
             print("loading existing settings")
             self.settings = sets
 
-        print(self.settings)
+        print("Settings")
+        pprint(self.settings)
         pin = 'D' + str(self.settings["relayPin"])
         self.relayPin = getattr(board, pin)
-        print("Settings Reread")
+        print("Settings Sets")
 
     async def hello(self):
         print("hello")
