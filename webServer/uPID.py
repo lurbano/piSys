@@ -159,9 +159,9 @@ class pidControl:
     async def getSettings(self):
         for i in range(10):
             await asyncio.gather(
-                print (f'hello {i}',
+                print (f'hello {i}'),
                 asyncio.sleep(1)
-                )
+            )
 
 # pid_step = 0
 # async def pidController():
