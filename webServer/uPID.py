@@ -163,6 +163,7 @@ class pidControl:
     def __init__(self, main_loop):
         self.main_loop = main_loop
         self.settings = defaultPidSettings.copy()
+        self.readSettings()
 
 
     async def getSettings(self):
@@ -180,10 +181,11 @@ class pidControl:
     def readSettings(self):
         with open(self.settings["settingsFile"], "r") as f:
             sets = json.load(f)
+            print(sets)
 
         if sets["isRunning"]:
             self.settings = sets
-        print("Settings Rerad")
+        print("Settings Reread")
 
     async def hello(self):
         print("hello")
