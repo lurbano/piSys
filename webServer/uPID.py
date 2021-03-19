@@ -138,9 +138,9 @@ class uPID:
         return self.sensor.read()
 
     def logData(self, msg):
-        print(self.logFile)
+        #print(self.logFile)
         with open(self.logFile, "a") as f:
-            f.write(f'{msg["t"]},{msg["x"]},{msg["on"]}\n')
+            f.write(f'{msg["t"]},{msg["x"]},{int(msg["on"])}\n')
 
 
     def saveSettings(self):
