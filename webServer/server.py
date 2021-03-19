@@ -246,7 +246,7 @@ if __name__ == "__main__":
 		# sensor2 = sensor_T()
 		# pid2 = uPID(sensor2, logFileName="active2.log")
 		###########
-		main_pid = pidControl()
+		main_pid = pidControl(main_loop)
 
 		main_loop.start()
 
