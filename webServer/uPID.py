@@ -193,7 +193,7 @@ class pidController:
             self.ledPix.pixels.show()
 
         self.settings["isRunning"] = True
-        self.writeSettings()
+        await self.writeSettings()
 
         while self.settings["isRunning"]:
             await asyncio.gather(
@@ -201,7 +201,7 @@ class pidController:
                 self.pidStep()
             )
 
-        self.writeSettings()
+        await self.writeSettings()
 
         if self.ledPix:
             self.ledPix.clear()
@@ -237,7 +237,7 @@ class pidController:
         #print(msg)
 
     def stop(self):
-        self.settings["isRunning"] = False 
+        self.settings["isRunning"] = False
         if self.ledPix:
             self.ledPix.clear()
             self.ledPix.pixels[0] = (100,0,0)
