@@ -212,7 +212,7 @@ class pidController:
             if (self.power.value == True):
                 self.power.value = False
 
-        if ledPix:
+        if self.ledPix:
             if self.power.value:
                 self.ledPix.pixels[1] = (100, 0, 0)
             else:
