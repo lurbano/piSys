@@ -195,7 +195,7 @@ class pidController:
             self.ledPix.pixels.show()
 
         self.settings["isRunning"] = True
-        await self.writeSettings()
+        self.writeSettings()
 
         while self.settings["isRunning"]:
             await asyncio.gather(
@@ -242,7 +242,7 @@ class pidController:
             self.ledPix.pixels[0] = (100,0,0)
             self.ledPix.pixels.show()
 
-        await self.writeSettings()
+        self.writeSettings()
 
         if self.ledPix:
             self.ledPix.clear()
@@ -258,7 +258,7 @@ class pidController:
     #             self.hello()
     #         )
 
-    async def writeSettings(self):
+    def writeSettings(self):
         with open(self.settings["settingsFile"], "w") as f:
             f.write(json.dumps(self.settings))
 
