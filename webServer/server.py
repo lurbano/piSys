@@ -248,6 +248,8 @@ if __name__ == "__main__":
 		###########
 		main_pid = pidControl(main_loop)
 
+		main_loop.add_callback(main_pid.getSettings)
+
 		main_loop.start()
 
 		#pidController(pid2)
