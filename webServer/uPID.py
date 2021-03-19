@@ -4,6 +4,7 @@ from digitalio import DigitalInOut, Direction
 import asyncio
 import time
 import neopixel
+import pprint
 
 defaultPidSettings = {
     "relayPin": 26,
