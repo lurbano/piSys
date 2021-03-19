@@ -176,12 +176,7 @@ class pidController:
         self.server = server
         self.ledPix = ledPix
 
-        msg = {
-			"info": "pidMsg",
-			"msg": "Starting PID Now"
-		}
-        for client in self.clients:
-            client.write_message(msg)
+        self.writeMsg("Starting PID Now")
 
         if not target_val:
             self.target = float(self.settings["target"])
@@ -247,6 +242,7 @@ class pidController:
 
     def stop(self):
         print("stopping task")
+        self.writeMsg("Sending stop signal.")
         self.settings["isRunning"] = False
         #self.task.cancel()
         self.power.value = False
@@ -256,7 +252,13 @@ class pidController:
             self.ledPix.pixels[0] = (100,0,0)
             self.ledPix.pixels.show()
 
-
+    def writeMsg(self, msg):
+        message = {
+			"info": "pidMsg",
+			"msg": msg
+		}
+        for client in self.clients:
+            client.write_message(message)
 
 
     # async def getSettings(self):
