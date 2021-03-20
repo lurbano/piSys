@@ -55,7 +55,7 @@ print("ledPix:", ledPix)
 # To broadcast messages to all websocket clients
 #websocket_clients = []
 from websocketBroadcasterU import *
-wsCast = websocketBroadcasterU()
+wsCast = wsBroadcasterU()
 
 # PID
 from uPID import *

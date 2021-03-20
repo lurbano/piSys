@@ -1,4 +1,4 @@
-class websocketBroadcasterU:
+class wsBroadcasterU:
 
 	def __init__(self):
 		self.clients = []

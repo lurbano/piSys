@@ -177,9 +177,9 @@ class pidController:
         self.ledPix = ledPix
 
         print("runPID")
-        self.wsCast("pidMsg", "Starting PID Now")
+        self.wsCast.cast("pidMsg", "Starting PID Now")
         print("casted")
-        
+
         if not target_val:
             self.target = float(self.settings["target"])
         else:
@@ -244,7 +244,7 @@ class pidController:
 
     def stop(self):
         print("stopping task")
-        self.wsCast("Sending stop signal.")
+        self.wsCast.cast("Sending stop signal.")
         self.settings["isRunning"] = False
         #self.task.cancel()
         self.power.value = False
