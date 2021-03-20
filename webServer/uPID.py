@@ -233,13 +233,13 @@ class pidController:
                 self.ledPix.pixels[1] = (0, 100, 0)
             self.ledPix.pixels.show()
 
-        msg = {}
         msg["info"] = "PidUp"
         msg["x"] = T
         msg["t"] = round(time.time()-self.startTime, 4)
         msg["on"] = self.power.value
-        if self.server:
-            self.server.write_message(msg)
+        self.wsCast.write(msg)
+        # if self.server:
+        #     self.server.write_message(msg)
         #print(msg)
 
     def stop(self):

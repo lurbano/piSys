@@ -12,6 +12,10 @@ class wsBroadcasterU:
 	def len(self):
 		return len(self.clients)
 
+	def write(self, msg):
+		for client in self.clients:
+			client.write_message(msg)
+
 	def cast(self, whereTo, msg):
 		message = {
 			"info": whereTo,
