@@ -158,6 +158,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				else:
 					sensor.cancelTask()
 				sensor = sensor_T(self)
+				print("hello")
 				if ledPix:
 					ledPix.clear()
 				self.write_message({"info": "hello", "reply":"r1"})
