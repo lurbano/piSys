@@ -9,6 +9,9 @@ class websocketBroadcasterU:
 	def remove(self, client):
 		self.clients.remove(client)
 
+	def len(self):
+		return len(self.clients)
+
 	def cast(self, whereTo, msg):
 		message = {
 			"info": whereTo,

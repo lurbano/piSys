@@ -83,7 +83,7 @@ class MainHandler(tornado.web.RequestHandler):
 class WSHandler(tornado.websocket.WebSocketHandler):
 	def open(self):
 		wsCast.append(self)
-		print (f'[WS] Connection was opened. ({len(websocket_clients)})')
+		print (f'[WS] Connection was opened. ({wsCast.len()})')
 
 
 		self.write_message('{"who": "server", "info": "on"}')
