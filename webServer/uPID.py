@@ -176,6 +176,8 @@ class pidController:
         self.server = server
         self.ledPix = ledPix
 
+        print("runPID")
+        print(self.wsCast)
         self.wsCast("pidMsg", "Starting PID Now")
 
         if not target_val:
