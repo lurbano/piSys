@@ -69,7 +69,7 @@ $(document).ready(function(){
 
         //PID
         if (sData.info == 'PidUp'){
-          if (not dataT){
+          if (dataT === 'undefined'){
             dataT = new dataTable("logData", "°C");
             dataT.setupTable();
             graphT = new dataGraph("logGraph", "°C");
