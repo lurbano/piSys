@@ -177,9 +177,9 @@ class pidController:
         self.ledPix = ledPix
 
         print("runPID")
-        print(self.wsCast)
         self.wsCast("pidMsg", "Starting PID Now")
-
+        print("casted")
+        
         if not target_val:
             self.target = float(self.settings["target"])
         else:
