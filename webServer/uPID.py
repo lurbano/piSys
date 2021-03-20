@@ -239,9 +239,7 @@ class pidController:
         msg["t"] = round(time.time()-self.startTime, 4)
         msg["on"] = self.power.value
         self.wsCast.write(msg)
-        # if self.server:
-        #     self.server.write_message(msg)
-        #print(msg)
+
 
     def stop(self):
         print("stopping task")

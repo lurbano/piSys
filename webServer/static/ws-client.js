@@ -69,6 +69,11 @@ $(document).ready(function(){
 
         //PID
         if (sData.info == 'PidUp'){
+          if (not dataT){
+            dataT = new dataTable("logData", "°C");
+            dataT.setupTable();
+            graphT = new dataGraph("logGraph", "°C");
+          }
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
           //only keep last 10 rows in table
