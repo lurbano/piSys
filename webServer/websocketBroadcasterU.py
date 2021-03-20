@@ -8,5 +8,5 @@ class websocketBroadcasterU:
 			"info": whereTo,
 			"msg": msg
 		}
-        for client in self.clients:
-            client.write_message(message)
+		for client in self.clients:
+			client.write_message(message)
