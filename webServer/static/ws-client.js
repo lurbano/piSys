@@ -93,9 +93,9 @@ $(document).ready(function(){
         //PID (END)
         //PID2
         if (sData.info == 'pidSets'){
-          console.log(sData.sets);
-          $("#pidSetT").val(parseFloat(sData.sets.target));
-          $("#pidDt").val(parseFloat(sData.sets.dt));
+          console.log(sData.msg);
+          $("#pidSetT").val(parseFloat(sData.msg.target));
+          $("#pidDt").val(parseFloat(sData.msg.dt));
         }
 
         if (sData.info == 'pidMsg'){
