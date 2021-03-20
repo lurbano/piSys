@@ -97,8 +97,9 @@ $(document).ready(function(){
           $("#pidSetT").val(parseFloat(sData.sets.target));
           $("#pidDt").val(parseFloat(sData.sets.dt));
         }
+
         if (sData.info == 'pidMsg'){
-          $("#pidMessage").html(sData.msg);
+          $("#pidMsg").html(sData.msg);
         }
         //PID2 (END)
 

@@ -52,12 +52,15 @@ except:
 print("ledPix:", ledPix)
 # LED's (END)
 
-websocket_clients = []
+# To broadcast messages to all websocket clients
+#websocket_clients = []
+from websocketBroadcaster import *
+wsCast = websocketBroadcasterU()
 
 # PID
 from uPID import *
 pid = None
-pidControl = pidController(websocket_clients)
+pidControl = pidController(wsCast)
 
 # PID (END)
 

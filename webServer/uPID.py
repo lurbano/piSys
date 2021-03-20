@@ -161,8 +161,8 @@ class uPID:
 
 
 class pidController:
-    def __init__(self, clients):
-        self.clients = clients
+    def __init__(self, wsCast):
+        self.wsCast = wsCast
         self.settings = defaultPidSettings.copy()
         self.readSettings()
 
@@ -176,7 +176,7 @@ class pidController:
         self.server = server
         self.ledPix = ledPix
 
-        self.writeMsg("Starting PID Now")
+        self.wsCast("pidMsg", "Starting PID Now")
 
         if not target_val:
             self.target = float(self.settings["target"])
@@ -242,7 +242,7 @@ class pidController:
 
     def stop(self):
         print("stopping task")
-        self.writeMsg("Sending stop signal.")
+        self.wsCast("Sending stop signal.")
         self.settings["isRunning"] = False
         #self.task.cancel()
         self.power.value = False
