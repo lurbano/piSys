@@ -237,7 +237,9 @@ class pidController:
         msg["x"] = T
         msg["t"] = round(time.time()-self.startTime, 4)
         msg["on"] = self.power.value
+        print("writeData")
         self.wsCast.write(msg)
+        print('wroteData')
         # if self.server:
         #     self.server.write_message(msg)
         #print(msg)
