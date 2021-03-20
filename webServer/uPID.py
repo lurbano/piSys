@@ -244,7 +244,7 @@ class pidController:
 
     def stop(self):
         print("stopping task")
-        self.wsCast.cast("Sending stop signal.")
+        self.wsCast.cast("pidMsg", "Sending stop signal.")
         self.settings["isRunning"] = False
         #self.task.cancel()
         self.power.value = False
